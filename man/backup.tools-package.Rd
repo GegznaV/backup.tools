@@ -8,6 +8,14 @@
 \description{
 Tools to create backup copies for R and RStudio setup files.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/GegznaV/backup.tools/}
+  \item Report bugs at \url{https://github.com/GegznaV/backup.tools/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Vilmantas Gegzna \email{GegznaV@gmail.com} (\href{https://orcid.org/0000-0002-9500-5167}{ORCID})
 
