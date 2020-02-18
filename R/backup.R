@@ -4,7 +4,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' Create backup file.
 #'
-#' @param file (character) The name of file for backup.
+#' @param file (character) The name of file to backup.
 #' @param backup_subdir (character) The name of subdirectory in the directory
 #'        of backups.
 #' @param backup_stamp (character) Usually the result of `get_backup_stamp()`.
@@ -36,12 +36,13 @@ create_backup_copy <- function(file = NULL, backup_subdir = "",
       "Back up copy of {crayon::green(of_what)} was created ",
       "in {usethis::ui_path(unique(fs::path_dir(backup_files)))}"
     ))
-
     # FIXME: verify that the back-up was successful
 
+    TRUE
+
   } else {
-    usethis::ui_info("There were no {crayon::green(of_what)} to back-up.")
-    # FIXME: announce that no files were backed-up
+    usethis::ui_info("No {crayon::green(of_what)} to back-up.")
+    TRUE
   }
 }
 
@@ -82,10 +83,12 @@ construct_backup_path <- function(file = NULL, backup_subdir = "",
 #' - `create_backup_dir()` creates directory for backup files.
 #' -
 #'
-#' @param ... The name of subtirectory. Arguments to [fs::path()].
+#' @param ... The name of subtirectory in backup directory.
+#'            Passed to to [fs::path()].
 #'
 #' @return
 #' - `get_path_backup_dir()` returns string with path to directory.
+#'    Default is `"~/.R/_backup/"`.
 #'
 #' @export
 #'
@@ -99,7 +102,11 @@ get_path_backup_dir <- function(...) {
   backup_dir <- Sys.getenv("R_SETTINGS_BACKUP_DIR")
 
   if (backup_dir == "") {
-    backup_dir <- fs::path(Sys.getenv("R_USER"), ".R", "_backup")
+    # The default is "~/.R/_backup/"
+    backup_dir <- fs::path_expand_r("~/.R/_backup")
+
+    # # This code might not work on Unix:
+    # backup_dir <- fs::path(Sys.getenv("R_USER"), ".R", "_backup")
   }
 
   fs::path(backup_dir, ...)
@@ -109,7 +116,10 @@ get_path_backup_dir <- function(...) {
 #' @rdname get_path_backup_dir
 #' @export
 create_backup_dir <- function(...) {
-  fs::dir_create(get_path_backup_dir(...))
+  b_path <- get_path_backup_dir(...)
+  if (!fs::dir_exists(b_path)) {
+    fs::dir_create(b_path)
+  }
 }
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

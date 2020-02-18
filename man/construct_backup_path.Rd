@@ -11,7 +11,7 @@ construct_backup_path(
 )
 }
 \arguments{
-\item{file}{(character) The name of file for backup.}
+\item{file}{(character) The name of file to backup.}
 
 \item{backup_subdir}{(character) The name of subdirectory in the directory
 of backups.}

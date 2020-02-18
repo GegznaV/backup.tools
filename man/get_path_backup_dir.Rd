@@ -10,11 +10,13 @@ get_path_backup_dir(...)
 create_backup_dir(...)
 }
 \arguments{
-\item{...}{The name of subtirectory. Arguments to \code{\link[fs:path]{fs::path()}}.}
+\item{...}{The name of subtirectory in backup directory.
+Passed to to \code{\link[fs:path]{fs::path()}}.}
 }
 \value{
 \itemize{
 \item \code{get_path_backup_dir()} returns string with path to directory.
+Default is \code{"~/.R/_backup/"}.
 }
 }
 \description{
