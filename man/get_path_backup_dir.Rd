@@ -3,11 +3,14 @@
 \name{get_path_backup_dir}
 \alias{get_path_backup_dir}
 \alias{create_backup_dir}
+\alias{open_backup_dir}
 \title{Path to backup directory.}
 \usage{
 get_path_backup_dir(...)
 
 create_backup_dir(...)
+
+open_backup_dir(...)
 }
 \arguments{
 \item{...}{The name of subtirectory in backup directory.
@@ -23,13 +26,13 @@ Default is \code{"~/.R/_backup/"}.
 \itemize{
 \item \code{get_path_backup_dir()} gets string with path to directory for backup files.
 \item \code{create_backup_dir()} creates directory for backup files.
-\item 
+\item \code{open_backup_dir()} open backup directory.
 }
 }
 \examples{
 \dontrun{\donttest{
 
 get_path_backup_dir()
-
+open_backup_dir()
 }}
 }

@@ -1,5 +1,7 @@
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Create back-ups ------------------------------------------------------------
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' Create backup file.
@@ -74,14 +76,17 @@ construct_backup_path <- function(file = NULL, backup_subdir = "",
 }
 
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Directory for back-ups -----------------------------------------------------
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' Path to backup directory.
 #'
 #' - `get_path_backup_dir()` gets string with path to directory for backup files.
 #' - `create_backup_dir()` creates directory for backup files.
-#' -
+#' - `open_backup_dir()` open backup directory.
+#'
 #'
 #' @param ... The name of subtirectory in backup directory.
 #'            Passed to to [fs::path()].
@@ -96,7 +101,7 @@ construct_backup_path <- function(file = NULL, backup_subdir = "",
 #' \dontrun{\donttest{
 #'
 #' get_path_backup_dir()
-#'
+#' open_backup_dir()
 #' }}
 get_path_backup_dir <- function(...) {
   backup_dir <- Sys.getenv("R_SETTINGS_BACKUP_DIR")
@@ -120,6 +125,13 @@ create_backup_dir <- function(...) {
   if (!fs::dir_exists(b_path)) {
     fs::dir_create(b_path)
   }
+}
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' @rdname get_path_backup_dir
+#' @export
+open_backup_dir <- function(...) {
+  browseURL(get_path_backup_dir(...))
 }
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
