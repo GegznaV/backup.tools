@@ -11,14 +11,17 @@
 #'        of backups.
 #' @param backup_stamp (character) Usually the result of `get_backup_stamp()`.
 #' @param of_what  (character) String to be used in message. Usually word "file"
-#'        or the name of `backup_subdir`.
+#' @param show  (character) what should be shown in te message:
+#'        - `file` -- path to backup files;
+#'        - `dir`  -- path to directory with backup files.
 #'
 #' @export
 #'
 create_backup_copy <- function(file = NULL, backup_subdir = "",
   of_what = ifelse(backup_subdir == "", "file(s)", backup_subdir),
-  backup_stamp = get_backup_stamp()) {
+  backup_stamp = get_backup_stamp(), show = c("file", "dir")) {
 
+  show <- match.arg(show)
   f_exist <- fs::file_exists(file)
 
   if (any(f_exist)) {
@@ -34,16 +37,30 @@ create_backup_copy <- function(file = NULL, backup_subdir = "",
 
     fs::file_copy(current_files_e, backup_files)
 
-    usethis::ui_done(paste0(
-      "Back up copy of {crayon::green(of_what)} was created ",
-      "in {usethis::ui_path(unique(fs::path_dir(backup_files)))}"
-    ))
     # FIXME: verify that the back-up was successful
 
+    of_what_green <- crayon::green(of_what)
+
+    switch(show,
+
+      "file" = {
+        backup_files_0 <- usethis::ui_path(backup_files)
+        usethis::ui_done(
+          "Back up copy of {of_what_green} saved as \n{backup_files_0}"
+        )
+      },
+
+      "dir" = {
+        backup_dir_0 <- usethis::ui_path(unique(fs::path_dir(backup_files)))
+        usethis::ui_done(
+          "Back up copy of {of_what_green} saved in {backup_dir_0}"
+        )
+      }
+    )
     TRUE
 
   } else {
-    usethis::ui_info("No {crayon::green(of_what)} to back-up.")
+    usethis::ui_info("No {of_what_green} to back-up.")
     TRUE
   }
 }
