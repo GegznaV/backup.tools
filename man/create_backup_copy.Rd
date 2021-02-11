@@ -8,7 +8,8 @@ create_backup_copy(
   file = NULL,
   backup_subdir = "",
   of_what = ifelse(backup_subdir == "", "file(s)", backup_subdir),
-  backup_stamp = get_backup_stamp()
+  backup_stamp = get_backup_stamp(),
+  show = c("file", "dir")
 )
 }
 \arguments{
@@ -17,10 +18,13 @@ create_backup_copy(
 \item{backup_subdir}{(character) The name of subdirectory in the directory
 of backups.}
 
-\item{of_what}{(character) String to be used in message. Usually word "file"
-or the name of \code{backup_subdir}.}
+\item{of_what}{(character) String to be used in message. Usually word "file"}
 
 \item{backup_stamp}{(character) Usually the result of \code{get_backup_stamp()}.}
+
+\item{show}{(character) what should be shown in te message:
+- \code{file} -- path to backup files;
+- \code{dir}  -- path to directory with backup files.}
 }
 \description{
 Create backup file.
