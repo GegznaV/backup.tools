@@ -121,7 +121,8 @@
   file <span class='op'>=</span> <span class='cn'>NULL</span>,
   backup_subdir <span class='op'>=</span> <span class='st'>""</span>,
   of_what <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>backup_subdir</span> <span class='op'>==</span> <span class='st'>""</span>, <span class='st'>"file(s)"</span>, <span class='va'>backup_subdir</span><span class='op'>)</span>,
-  backup_stamp <span class='op'>=</span> <span class='fu'><a href='get_backup_stamp.html'>get_backup_stamp</a></span><span class='op'>(</span><span class='op'>)</span>
+  backup_stamp <span class='op'>=</span> <span class='fu'><a href='get_backup_stamp.html'>get_backup_stamp</a></span><span class='op'>(</span><span class='op'>)</span>,
+  show <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"file"</span>, <span class='st'>"dir"</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -138,12 +139,17 @@ of backups.</p></td>
     </tr>
     <tr>
       <th>of_what</th>
-      <td><p>(character) String to be used in message. Usually word "file"
-or the name of <code>backup_subdir</code>.</p></td>
+      <td><p>(character) String to be used in message. Usually word "file"</p></td>
     </tr>
     <tr>
       <th>backup_stamp</th>
       <td><p>(character) Usually the result of <code><a href='get_backup_stamp.html'>get_backup_stamp()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>show</th>
+      <td><p>(character) what should be shown in te message:
+- <code>file</code> -- path to backup files;
+- <code>dir</code>  -- path to directory with backup files.</p></td>
     </tr>
     </table>
 
