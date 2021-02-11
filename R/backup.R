@@ -44,6 +44,7 @@ create_backup_copy <- function(file = NULL, backup_subdir = "",
     switch(show,
 
       "file" = {
+        # file.exists(backup_files)
         backup_files_0 <- usethis::ui_path(backup_files)
         usethis::ui_done(
           "Back up copy of {of_what_green} saved as \n{backup_files_0}"
