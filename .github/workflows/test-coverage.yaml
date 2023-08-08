@@ -10,6 +10,7 @@ on:
       - release
       - master
       - develop
+  workflow_dispatch:
 
 name: Test coverage
 
