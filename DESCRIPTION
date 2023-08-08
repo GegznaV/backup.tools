@@ -1,7 +1,7 @@
 Package: backup.tools
 Type: Package
 Title: Tools to Create Backup Files
-Version: 0.0.1.9000
+Version: 0.0.2
 Authors@R: 
     person("Vilmantas", "Gegzna", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-9500-5167"),
