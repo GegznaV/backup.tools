@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 name: Publish package
 
@@ -37,14 +38,13 @@ jobs:
 
       - name: Query dependencies
         run: |
-          options("repos" = "https://cran.rstudio.com/")
-          install.packages('remotes', repos = "https://cran.rstudio.com/")
+          install.packages('remotes')
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
 
-      - name: Cache R packages
-        if: runner.os != 'Windows'
+      - name: Restore R package cache
+        # if: runner.os != 'Windows'
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}

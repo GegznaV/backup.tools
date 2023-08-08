@@ -11,12 +11,19 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://github.com/GegznaV/backup.tools/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/backup.tools/actions)
 
 <!-- badges: end -->
-
 <!-- The goal of backup.tools is to ... -->
 
 ## Installation
 
-The development version from [GitHub](https://github.com/) with:
+Download from CRAN-like repository:
+
+``` r
+repos <- c("https://mokymai.github.io/download/", getOption("repos"))
+install.packages("backup.tools", repos = repos)
+```
+
+Download the development version from [GitHub](https://github.com/)
+(note: to download, on Windows `RTools` must be installed):
 
 ``` r
 if (!require(remotes)) install.packages("remotes")
