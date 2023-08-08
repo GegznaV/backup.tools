@@ -11,7 +11,6 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://github.com/GegznaV/backup.tools/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/backup.tools/actions)
 
 <!-- badges: end -->
-
 <!-- The goal of backup.tools is to ... -->
 
 ## Installation
