@@ -27,9 +27,17 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-The development version from [GitHub](https://github.com/) with:
+Download from CRAN-like repository:
 
-``` r
+```{r eval=FALSE}
+repos <- c("https://mokymai.github.io/download/", getOption("repos"))
+install.packages("backup.tools", repos = repos)
+```
+
+
+Download the development version from [GitHub](https://github.com/) (note: to download, on Windows `RTools` must be installed):
+
+```{r eval=FALSE}
 if (!require(remotes)) install.packages("remotes")
 remotes::install_github("GegznaV/backup.tools")
 ```
