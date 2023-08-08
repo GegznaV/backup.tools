@@ -47,14 +47,14 @@ create_backup_copy <- function(file = NULL, backup_subdir = "",
         # file.exists(backup_files)
         backup_files_0 <- usethis::ui_path(backup_files)
         usethis::ui_done(
-          "Back up copy of {of_what_green} saved as \n{backup_files_0}"
+          "Back up copy of {of_what_green} was saved as \n{backup_files_0}"
         )
       },
 
       "dir" = {
         backup_dir_0 <- usethis::ui_path(unique(fs::path_dir(backup_files)))
         usethis::ui_done(
-          "Back up copy of {of_what_green} saved in {backup_dir_0}"
+          "Back up copy of {of_what_green} was saved in {backup_dir_0}"
         )
       }
     )
