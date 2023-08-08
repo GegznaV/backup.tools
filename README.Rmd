@@ -41,3 +41,4 @@ Download the development version from [GitHub](https://github.com/) (note: to do
 if (!require(remotes)) install.packages("remotes")
 remotes::install_github("GegznaV/backup.tools")
 ```
+
