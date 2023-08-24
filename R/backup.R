@@ -24,6 +24,8 @@ create_backup_copy <- function(file = NULL, backup_subdir = "",
   show <- match.arg(show)
   f_exist <- fs::file_exists(file)
 
+  of_what_green <- crayon::green(of_what)
+
   if (any(f_exist)) {
     current_files_e <- file[f_exist]
     backup_files    <-
@@ -38,8 +40,6 @@ create_backup_copy <- function(file = NULL, backup_subdir = "",
     fs::file_copy(current_files_e, backup_files)
 
     # FIXME: verify that the back-up was successful
-
-    of_what_green <- crayon::green(of_what)
 
     switch(show,
 
